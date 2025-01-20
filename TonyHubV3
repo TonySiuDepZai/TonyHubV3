@@ -2,15 +2,19 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/TonySiuDepZai/SourceUi/refs/heads/main/TonyHub')))()
 local Window = OrionLib:MakeWindow({Name = "Tony Hub | 🎄 Blox Fruit!", HidePremium = false, IntroText = "Tony Hub ⭐", SaveConfig = true, ConfigFolder = "TonyHubConfig"})
 
-Window:MakeTab({
+local Tab = Window:MakeTab({
     Name = "Infomation",
     Icon = "rbxassetid://11348555035",
     PremiumOnly = false
-}):AddParagraph("About", [[
+})
+
+Tab:AddParagraph("About The Script", [[
 Welcome to Tony Hub 😎!
 Script Officaly Made by TonyTheSussy 🇺🇸 !
 Make Sure To Join My Discord ;)
 ]])
+
+Tab:AddLabel("Anti AFK Status:✅")
 
 --Farming Tab--
 
@@ -36,7 +40,59 @@ local FarmTab = Window:MakeTab({
     PremiumOnly = false
 })
 
-FarmTab:AddSlider({
+--Visual Tab--
+
+local Tab = Window:MakeTab({
+    Name = "Visual-Esp",
+    Icon = "rbxassetid://11887653877",
+    PremiumOnly = false
+})
+
+--Teleport Tab--
+
+local Tab = Window:MakeTab({
+    Name = "Teleport Island",
+    Icon = "rbxassetid://12941020168",
+    PremiumOnly = false
+})
+
+--Local Player Tab--
+
+ local Tab = Window:MakeTab({
+    Name = "Local Player",
+    Icon = "rbxassetid://11833765861",
+    PremiumOnly = false
+})
+
+Tab:AddSection({Name = "Change Team 🟥🟦"})
+
+Tab:AddButton({
+	Name = "Change Pirate Team 🥵",
+	Callback = function(Value) 
+        local args = {
+            [1] = "SetTeam",
+            [2] = "Pirates"
+        }
+        
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+    end
+})
+
+Tab:AddButton({
+    Name = "Change Marine Team 🥶",
+    Callback = function(value)
+        local args = {
+            [1] = "SetTeam",
+            [2] = "Marines"
+        }
+        
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+    end
+})
+
+Tab:AddSection({Name = "Change Super Power 🦸"})
+
+Tab:AddSlider({
     Name = "WalkSpeed",
     Min = 1,
     Max = 10,
@@ -49,7 +105,7 @@ FarmTab:AddSlider({
     end
 })
 
-FarmTab:AddSlider({
+Tab:AddSlider({
     Name = "Jump Power",
     Min = 1,
     Max = 500,
@@ -61,7 +117,6 @@ FarmTab:AddSlider({
         game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
     end,
  })
-
 
 --Devil Fruit Tab--
 
@@ -220,6 +275,45 @@ FarmTab:AddButton({
     end
 })
 
+FarmTab:AddButton({
+    Name = "SanguineArt",
+    Callback = function(value)
+        local args = {
+            [1] = "BuySanguineArt"
+        }
+        
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+    end
+})
+
+FarmTab:AddSection({Name = "Race 🦈"})
+
+FarmTab:AddButton({
+    Name = "Race Reroll 3000 Fragment",
+    Callback = function(value)
+        local args = {
+            [1] = "BlackbeardReward",
+            [2] = "Reroll",
+            [3] = "2"
+        }
+        
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+    end
+})
+
+FarmTab:AddButton({
+    Name = "Change To Ghoul Race",
+    Callback = function(value)
+        local args = {
+            [1] = "Ectoplasm",
+            [2] = "Change",
+            [3] = 4
+        }
+        
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+    end
+})
+
 --Status Tab--
 
 local Tab = Window:MakeTab({
@@ -243,6 +337,7 @@ spawn(function()
 end)
 
 end
+
 
 --ANTI AFK--
 
